@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVVJ Mischpult</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <select id="languageSelect" onchange="setLanguage(this.value)">
+            <option value="de">Deutsch 🇩🇪</option>
+            <option value="en">English 🇬🇧</option>
+            <option value="sr">Srpski 🇷🇸</option>
+            <option value="hr">Hrvatski 🇭🇷</option>
+            <option value="fr">Français 🇫🇷</option>
+            <option value="es">Español 🇪🇸</option>
+            <option value="ru">Русский 🇷🇺</option>
+            <option value="zh">中文 🇨🇳</option>
+            <option value="ja">日本語 🇯🇵</option>
+            <option value="ko">한국어 🇰🇷</option>
+        </select>
+    </header>
+
+    <h1>MVVJ Mischpult</h1>
+
+    <div class="player-container">
+        <div class="player-wrapper">
+            <h2>Player A</h2>
+            <div class="player-content">
+                <div class="search-section">
+                    <label data-i18n="search-video-label" for="searchA">Video suchen:</label>
+                    <input type="text" id="searchA" placeholder="Titel eingeben">
+                    <button data-i18n="search-button" onclick="searchYouTube('A')" title="Sucht auf YouTube nach Videos basierend auf dem eingegebenen Text.">Suchen</button>
+                    <hr>
+                    <label data-i18n="video-id-label" for="videoA">Video-ID:</label>
+                    <input type="text" id="videoA" value="OETvobxUgG4" title="Geben Sie eine YouTube-Video-ID ein, um es direkt zu laden.">
+                    <button data-i18n="load-button" onclick="loadVideo('A')" title="Lädt das Video mit der eingegebenen ID.">Laden</button>
+                    <hr>
+                    <p data-i18n="tempo-label">Tempo-Anpassung: <span id="tempoA" class="tempo-display">0%</span></p>
+                    <button onclick="adjustSpeed('A', 0.05)" title="Erhöht die Wiedergabegeschwindigkeit um 5%.">+</button>
+                    <button onclick="adjustSpeed('A', -0.05)" title="Reduziert die Wiedergabegeschwindigkeit um 5%.">-</button>
+                    <hr>
+                    <p data-i18n="beat-counter-label">Beat Counter:</p>
+                    <button onclick="tapBeat('A')" title="Tippen Sie im Takt, um die BPM manuell zu messen.">TAP</button>
+                    <span id="bpmA" class="bpm-display">BPM: --</span>
+                    <button data-i18n="sync-button" onclick="syncTempo('A')" title="Passt die Geschwindigkeit dieses Players an die BPM des anderen Players an.">Sync</button>
+                    <hr>
+                    <div class="cue-loop-controls">
+                        <p data-i18n="cue-points-label">Cue-Punkte:</p>
+                        <div>
+                            <button onclick="setCue('A', 0)" title="Setzt Cue-Punkt 1 an der aktuellen Position.">Set 1</button>
+                            <button onclick="goToCue('A', 0)" title="Springt zu Cue-Punkt 1.">Go 1</button>
+                        </div>
+                        <div>
+                            <button onclick="setCue('A', 1)" title="Setzt Cue-Punkt 2 an der aktuellen Position.">Set 2</button>
+                            <button onclick="goToCue('A', 1)" title="Springt zu Cue-Punkt 2.">Go 2</button>
+                        </div>
+                        <div>
+                            <button onclick="setCue('A', 2)" title="Setzt Cue-Punkt 3 an der aktuellen Position.">Set 3</button>
+                            <button onclick="goToCue('A', 2)" title="Springt zu Cue-Punkt 3.">Go 3</button>
+                        </div>
+                        <p data-i18n="loop-label">Loop:</p>
+                        <div>
+                            <button onclick="setLoopIn('A')" title="Markiert den Startpunkt des Loops.">In</button>
+                            <button onclick="setLoopOut('A')" title="Markiert den Endpunkt des Loops.">Out</button>
+                        </div>
+                        <button id="loopBtnA" data-i18n="loop-off-button" onclick="toggleLoop('A')" title="Aktiviert oder deaktiviert die Loop-Funktion.">Loop Off</button>
+                    </div>
+                </div>
+                <div id="playerA"></div>
+            </div>
+            <div class="video-info-section">
+                <p class="time-display">
+                    <span id="currentTimeA">00:00</span> / <span id="remainingTimeA">--:--</span>
+                </p>
+                <button class="result-button" onclick="showResultScreen('A')" title="Öffnet das Video in einem neuen Fenster im Vollbildmodus.">
+                    <span data-i18n="show-result-label">Ergebnis anzeigen</span> A
+                </button>
+                <div id="waveformA" class="waveform-container">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="player-wrapper">
+            <h2>Player B</h2>
+            <div class="player-content">
+                <div class="search-section">
+                    <label data-i18n="search-video-label" for="searchB">Video suchen:</label>
+                    <input type="text" id="searchB" placeholder="Titel eingeben">
+                    <button data-i18n="search-button" onclick="searchYouTube('B')" title="Sucht auf YouTube nach Videos basierend auf dem eingegebenen Text.">Suchen</button>
+                    <hr>
+                    <label data-i18n="video-id-label" for="videoB">Video-ID:</label>
+                    <input type="text" id="videoB" value="GGlqcTthGoM" title="Geben Sie eine YouTube-Video-ID ein, um es direkt zu laden.">
+                    <button data-i18n="load-button" onclick="loadVideo('B')" title="Lädt das Video mit der eingegebenen ID.">Laden</button>
+                    <hr>
+                    <p data-i18n="tempo-label">Tempo-Anpassung: <span id="tempoB" class="tempo-display">0%</span></p>
+                    <button onclick="adjustSpeed('B', 0.05)" title="Erhöht die Wiedergabegeschwindigkeit um 5%.">+</button>
+                    <button onclick="adjustSpeed('B', -0.05)" title="Reduziert die Wiedergabegeschwindigkeit um 5%.">-</button>
+                    <hr>
+                    <p data-i18n="beat-counter-label">Beat Counter:</p>
+                    <button onclick="tapBeat('B')" title="Tippen Sie im Takt, um die BPM manuell zu messen.">TAP</button>
+                    <span id="bpmB" class="bpm-display">BPM: --</span>
+                    <button data-i18n="sync-button" onclick="syncTempo('B')" title="Passt die Geschwindigkeit dieses Players an die BPM des anderen Players an.">Sync</button>
+                    <hr>
+                    <div class="cue-loop-controls">
+                        <p data-i18n="cue-points-label">Cue-Punkte:</p>
+                        <div>
+                            <button onclick="setCue('B', 0)" title="Setzt Cue-Punkt 1 an der aktuellen Position.">Set 1</button>
+                            <button onclick="goToCue('B', 0)" title="Springt zu Cue-Punkt 1.">Go 1</button>
+                        </div>
+                        <div>
+                            <button onclick="setCue('B', 1)" title="Setzt Cue-Punkt 2 an der aktuellen Position.">Set 2</button>
+                            <button onclick="goToCue('B', 1)" title="Springt zu Cue-Punkt 2.">Go 2</button>
+                        </div>
+                        <div>
+                            <button onclick="setCue('B', 2)" title="Setzt Cue-Punkt 3 an der aktuellen Position.">Set 3</button>
+                            <button onclick="goToCue('B', 2)" title="Springt zu Cue-Punkt 3.">Go 3</button>
+                        </div>
+                        <p data-i18n="loop-label">Loop:</p>
+                        <div>
+                            <button onclick="setLoopIn('B')" title="Markiert den Startpunkt des Loops.">In</button>
+                            <button onclick="setLoopOut('B')" title="Markiert den Endpunkt des Loops.">Out</button>
+                        </div>
+                        <button id="loopBtnB" data-i18n="loop-off-button" onclick="toggleLoop('B')" title="Aktiviert oder deaktiviert die Loop-Funktion.">Loop Off</button>
+                    </div>
+                </div>
+                <div id="playerB"></div>
+            </div>
+            <div class="video-info-section">
+                <p class="time-display">
+                    <span id="currentTimeB">00:00</span> / <span id="remainingTimeB">--:--</span>
+                </p>
+                <button class="result-button" onclick="showResultScreen('B')" title="Öffnet das Video in einem neuen Fenster im Vollbildmodus.">
+                    <span data-i18n="show-result-label">Ergebnis anzeigen</span> B
+                </button>
+                <div id="waveformB" class="waveform-container">
+                    <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mixer-controls">
+        <div class="control-section">
+            <button data-i18n="filter-button" id="filterToggleBtn" onclick="toggleFilter()" title="Schaltet den Creative Commons Filter für die YouTube-Suche ein oder aus.">Filter: Ein</button>
+            <p data-i18n="filter-hint" class="hint">Filtert nach Creative Commons</p>
+        </div>
+        
+        <div class="control-section audio-control">
+            <p data-i18n="audio-mix-label">Audio-Überblendung</p>
+            <p data-i18n="player-a-label" class="audio-label">Player A</p>
+            <input type="range" min="0" max="100" value="50" class="slider" id="volumeSlider" title="Überblendet den Ton zwischen Player A und Player B.">
+            <p data-i18n="player-b-label" class="audio-label">Player B</p>
+        </div>
+
+        <div class="control-section">
+            <p data-i18n="latency-label">Latenz-Offset (ms):</p>
+            <input type="number" id="latencyOffset" value="1450" min="0" title="Passt die Latenz im Ergebnis-Fenster an, um die Synchronisation zu verbessern.">
+        </div>
+    </div>
+
+    <script src="mixer-script.js"></script>
+</body>
+</html>

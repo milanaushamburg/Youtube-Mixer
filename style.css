@@ -1,0 +1,233 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0d0d0d;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: linear-gradient(135deg, #000000 0%, #FF0000 50%, #FFCC00 100%);
+    background-size: 100% 100%;
+}
+
+h1, h2, p, label {
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+}
+
+header {
+    width: 100%;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+#languageSelect {
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+
+.player-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+}
+
+.player-wrapper {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    margin-bottom: 20px;
+    flex: 1;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-content {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.search-section input[type="text"],
+.control-section input[type="number"] {
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #555;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.search-section button, button {
+    background-color: #00ffff;
+    color: #000;
+    padding: 5px 8px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.search-section button:hover, button:hover {
+    background-color: #32cd32;
+}
+
+.search-section p {
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.bpm-display, .tempo-display {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #ffff00;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.time-display {
+    font-size: 1em;
+    font-weight: bold;
+    color: #ccc;
+    text-shadow: 1px 1px 1px #000;
+    margin-top: -10px;
+}
+
+.hint {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-top: 5px;
+}
+
+.mixer-controls {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.control-section {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.audio-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.slider {
+    width: 350px;
+    cursor: pointer;
+}
+
+.audio-label {
+    font-weight: bold;
+    min-width: 60px;
+    text-align: right;
+}
+
+.output-container {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#outputPlayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.output-container h1, .audio-info {
+    display: none;
+}
+
+/* Stil für Cue- und Loop-Steuerung */
+.cue-loop-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    text-align: left;
+}
+.cue-loop-controls div {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+/* Stil für Wellenform-Oszillator */
+.video-info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.waveform-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.waveform-container .bar {
+    width: 10%;
+    background-color: #32cd32;
+    margin: 0 2px;
+    border-radius: 2px;
+    transition: height 0.1s ease-out;
+}
+
+.result-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ff1493;
+    color: #fff;
+    box-shadow: 0 0 10px #ff1493;
+}
